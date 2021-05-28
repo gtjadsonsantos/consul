@@ -120,6 +120,7 @@ data:
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   datacenter: prod
   name: jadson179
+  rules: ""
   acl_type: client
 ```
 
@@ -135,6 +136,8 @@ data:
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   datacenter: prod
   name: jadson179
+  acl_id: ""
+  rules: ""
   acl_type: client
 ```
 
