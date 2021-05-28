@@ -93,7 +93,7 @@ data:
       value: value test2
 ```
 
-### consul: kv_set_delete
+### consul: kv_delete
 
 Delete one key value.
 
