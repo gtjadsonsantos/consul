@@ -1,0 +1,4 @@
+contact_links: 
+  - about: "Most issues should be posted over at controlid."
+    name: Bug / feature request / usage question
+    url: "https://github.com/jadson179/controlid/issues/new"

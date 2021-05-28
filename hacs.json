@@ -1,0 +1,6 @@
+{ 
+    "name": "consul",
+    "render_readme": "true",
+    "iot_class": ["Local Push"],
+    "version": "2021.1.0"
+}

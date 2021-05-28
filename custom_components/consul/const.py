@@ -1,0 +1,3 @@
+"""Consul constants."""
+
+DOMAIN="consul"
