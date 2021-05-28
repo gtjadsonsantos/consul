@@ -149,6 +149,7 @@ data:
   port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   datacenter: prod
+  acl_id: ""
 ```
 
 ## LICENSE 📝
