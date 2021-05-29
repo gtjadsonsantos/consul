@@ -17,6 +17,14 @@ catalog_register:
       selector:
         text:
 
+    protocol: 
+      name: Protocol
+      description: The protocol HTTP or HTTPS
+      example: http
+      required: false
+      selector:
+        text:
+
     token: 
       name: Token
       description: The token
@@ -24,6 +32,8 @@ catalog_register:
       required: true
       selector:
         text:
+
+
 
     datacenter: 
       name: Datacenter
@@ -41,28 +51,50 @@ catalog_register:
       selector:
         text:
 
+    id: 
+      name: ID Node
+      description: ID Node 
+      example: 22ed1a08-cfe8-4833-b8a0-945a0264beb6
+      required: false
+      selector:
+        text:
+
+    address: 
+      name: Address
+      description: The address node
+      example: 192.168.0.1
+      required: true
+      selector:
+        text:
+
+    taggedaddresses:
+      name: TaggedAddresses
+      description: Specifies the tagged addresses.
+      example: {}
+      required: false
+      selector:
+        object:
+
+    node_meta:
+      name: node
+      description: Specifies arbitrary KV metadata pairs for filtering purposes.
+      example: {}
+      required: false
+      selector:
+        object:
+        
     service: 
       name: Service
-      description: The service
-      example: > 
-        id: 'redis1'
-        service: 'redis'
-        tags: ['master', 'v1']
-        port: 8000
+      description:  Specifies to register a service
+      example: {}
       required: false
       selector:
         object:
 
     check: 
       name: Check
-      description: The check
-      example: >
-        node: 'foobar'
-        checkid: 'service:redis1'
-        name: 'Redis health check'
-        notes: 'Script based health check'
-        status: 'passing'
-        serviceid: 'redis1'
+      description: Specifies to register a check
+      example: {}
       required: false
       selector:
         object:
@@ -128,321 +160,11 @@ catalog_deregister:
       selector:
         text:
 
-kv_set_one:
-  description: Create one key value.
-  fields:
-    host: 
-      name: Host
-      description: The host
-      example: 127.0.0.1
-      required: true
-      selector:
-        text:
 
-    port: 
-      name: Port
-      description: The port
-      example: 8500
+    ns:
+      name: Namesspace 
+      description: Namespace
+      example: team-1
       required: false
-      selector:
-        text:
-
-    token: 
-      name: Token
-      description: The token
-      example: 57c5d69a-5f19-469b-0543-12a487eecc66
-      required: true
-      selector:
-        text:
-
-    datacenter: 
-      name: Datacenter
-      description: The datacenter
-      example:  prod
-      required: false
-      selector:
-        text:
-
-    data: 
-      name: Item
-      description: The item
-      example: > 
-        item: "vpn_public_key"
-        value: "any thing"
-      required: true
-      selector:
-        object:
-
-kv_set_many:
-  description: Create many key value.
-  fields:
-    host: 
-      name: Host
-      description: The host
-      example: 127.0.0.1
-      required: true
-      selector:
-        text:
-
-    port: 
-      name: Port
-      description: The port
-      example: 8500
-      required: false
-      selector:
-        text:
-
-    token: 
-      name: Token
-      description: The token
-      example: 57c5d69a-5f19-469b-0543-12a487eecc66
-      required: true
-      selector:
-        text:
-
-    datacenter: 
-      name: Datacenter
-      description: The datacenter
-      example:  prod
-      required: false
-      selector:
-        text:
-
-    datas: 
-      name: Items
-      description: Items
-      example: > 
-        [{item: "teste1",value: "value test1"},{item: "teste2",value: "value test2"}]
-      required: true
-      selector:
-        object:
-
-kv_delete:
-  description: Delete one key value.
-  fields:
-    host: 
-      name: Host
-      description: The host
-      example: 127.0.0.1
-      required: true
-      selector:
-        text:
-
-    port: 
-      name: Port
-      description: The port
-      example: 8500
-      required: false
-      selector:
-        text:
-
-    token: 
-      name: Token
-      description: The token
-      example: 57c5d69a-5f19-469b-0543-12a487eecc66
-      required: true
-      selector:
-        text:
-
-    datacenter: 
-      name: Datacenter
-      description: The datacenter
-      example:  prod
-      required: false
-      selector:
-        text:
-
-    item: 
-      name: Item
-      description: item
-      example: teste1
-      required: true
-      selector:
-        text:
-
-    recurse: 
-      name: Recurse
-      description: recurse
-      example: False
-      required: true
-      selector:
-        boolean:
-
-
-acl_create:
-  description: Create one ACL
-  fields:
-    host: 
-      name: Host
-      description: The host
-      example: 127.0.0.1
-      required: true
-      selector:
-        text:
-
-    port: 
-      name: Port
-      description: The port
-      example: 8500
-      required: false
-      selector:
-        text:
-
-    token: 
-      name: Token
-      description: The token
-      example: 57c5d69a-5f19-469b-0543-12a487eecc66
-      required: true
-      selector:
-        text:
-
-    datacenter: 
-      name: Datacenter
-      description: The datacenter
-      example:  prod
-      required: false
-      selector:
-        text:
-
-    name: 
-      name: Name
-      description: The name acl
-      example:  jadson179
-      required: true
-      selector:
-        text:
-
-    rules: 
-      name: rules
-      description: The rules
-      example:  ""
-      required: true
-      selector:
-        text:
-          multiline: true
-
-    acl_type: 
-      name: ACL types
-      description: The acl types
-      example:  "client"
-      required: true
-      selector:
-        select:
-          options:
-            - client
-            - management
-
-
-acl_destroy:
-  description: Destroy one ACL
-  fields:
-    host: 
-      name: Host
-      description: The host
-      example: 127.0.0.1
-      required: true
-      selector:
-        text:
-
-    port: 
-      name: Port
-      description: The port
-      example: 8500
-      required: false
-      selector:
-        text:
-
-    token: 
-      name: Token
-      description: The token
-      example: 57c5d69a-5f19-469b-0543-12a487eecc66
-      required: true
-      selector:
-        text:
-
-    datacenter: 
-      name: Datacenter
-      description: The datacenter
-      example:  prod
-      required: false
-      selector:
-        text:
-
-    acl_id: 
-      name: Acl ID
-      description: The acl id
-      example:  ""
-      required: true
-      selector:
-        text:
-
-
-acl_update:
-  description: Update one ACL
-  fields:
-    host: 
-      name: Host
-      description: The host
-      example: 127.0.0.1
-      required: true
-      selector:
-        text:
-
-    port: 
-      name: Port
-      description: The port
-      example: 8500
-      required: false
-      selector:
-        text:
-
-    token: 
-      name: Token
-      description: The token
-      example: 57c5d69a-5f19-469b-0543-12a487eecc66
-      required: true
-      selector:
-        text:
-
-    datacenter: 
-      name: Datacenter
-      description: The datacenter
-      example:  prod
-      required: false
-      selector:
-        text:
-
-    name: 
-      name: Name
-      description: The name acl
-      example:  jadson179
-      required: true
-      selector:
-        text:
-
-    rules: 
-      name: rules
-      description: The rules
-      example:  ""
-      required: true
-      selector:
-        text:
-          multiline: true
-
-    acl_type: 
-      name: ACL types
-      description: The acl types
-      example:  "client"
-      required: true
-      selector:
-        select:
-          options:
-            - client
-            - management
-    acl_id: 
-      name: Acl ID
-      description: The acl id
-      example:  ""
-      required: true
       selector:
         text:
