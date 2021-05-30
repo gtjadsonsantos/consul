@@ -16,7 +16,7 @@ A a low level mechanism for directly registering or updating entries in the cata
 ```yaml
 service: consul.catalog_register
 data:
-  host: 127.0.0.1
+  host: 192.168.0.21
   port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   datacenter: prod
@@ -46,7 +46,7 @@ Directly remove entries in the catalog.
 ```yaml
 service: consul.catalog_deregister
 data:
-  host: 127.0.0.1
+  host: 192.168.0.21
   port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   node: raspberry
@@ -55,6 +55,37 @@ data:
   check_id: 'service:freepbx'
 
 ```
+
+### consul: kv_create_or_update
+
+The /kv endpoints access Consul's simple key/value store, useful for storing service configuration or other metadata
+
+```yaml
+service: consul.kv_create_or_update
+data:
+  host: 192.168.0.21
+  port: 8500
+  token: 57c5d69a-5f19-469b-0543-12a487eecc66
+  key: jadson179
+  value: 'https://github.com/jadson179'
+```
+
+### consul: kv_delete
+
+This endpoint deletes a single key or all keys sharing a prefix.
+
+
+```yaml
+service: consul.kv_delete
+data:
+  host: 192.168.0.21
+  port: 8500
+  token: 57c5d69a-5f19-469b-0543-12a487eecc66
+  key: jadson179
+  datacenter: prod
+  ns: default
+```
+
 
 ## LICENSE 📝
 

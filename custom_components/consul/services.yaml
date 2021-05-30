@@ -1,15 +1,15 @@
 catalog_register:
   description: A a low level mechanism for directly registering or updating entries in the catalog.
   fields:
-    host: 
+    host:
       name: Host
       description: The host
-      example: 127.0.0.1
+      example: 192.168.0.21
       required: true
       selector:
         text:
 
-    port: 
+    port:
       name: Port
       description: The port
       example: 8500
@@ -17,7 +17,7 @@ catalog_register:
       selector:
         text:
 
-    protocol: 
+    protocol:
       name: Protocol
       description: The protocol HTTP or HTTPS
       example: http
@@ -25,7 +25,7 @@ catalog_register:
       selector:
         text:
 
-    token: 
+    token:
       name: Token
       description: The token
       example: 57c5d69a-5f19-469b-0543-12a487eecc66
@@ -33,17 +33,15 @@ catalog_register:
       selector:
         text:
 
-
-
-    datacenter: 
+    datacenter:
       name: Datacenter
       description: The datacenter
-      example:  prod
+      example: prod
       required: false
       selector:
         text:
 
-    node: 
+    node:
       name: Node
       description: The node name
       example: raspberry
@@ -51,15 +49,15 @@ catalog_register:
       selector:
         text:
 
-    id: 
+    id:
       name: ID Node
-      description: ID Node 
+      description: ID Node
       example: 22ed1a08-cfe8-4833-b8a0-945a0264beb6
       required: false
       selector:
         text:
 
-    address: 
+    address:
       name: Address
       description: The address node
       example: 192.168.0.1
@@ -82,16 +80,16 @@ catalog_register:
       required: false
       selector:
         object:
-        
-    service: 
+
+    service:
       name: Service
-      description:  Specifies to register a service
+      description: Specifies to register a service
       example: {}
       required: false
       selector:
         object:
 
-    check: 
+    check:
       name: Check
       description: Specifies to register a check
       example: {}
@@ -99,19 +97,18 @@ catalog_register:
       selector:
         object:
 
-  
 catalog_deregister:
   description: Directly remove entries in the catalog.
   fields:
-    host: 
+    host:
       name: Host
       description: The host
-      example: 127.0.0.1
+      example: 192.168.0.21
       required: true
       selector:
         text:
 
-    port: 
+    port:
       name: Port
       description: The port
       example: 8500
@@ -119,7 +116,7 @@ catalog_deregister:
       selector:
         text:
 
-    token: 
+    token:
       name: Token
       description: The token
       example: 57c5d69a-5f19-469b-0543-12a487eecc66
@@ -127,7 +124,7 @@ catalog_deregister:
       selector:
         text:
 
-    node: 
+    node:
       name: Node
       description: The node name
       example: raspberry
@@ -135,11 +132,10 @@ catalog_deregister:
       selector:
         text:
 
-
-    datacenter: 
+    datacenter:
       name: Datacenter
       description: The datacenter
-      example:  prod
+      example: prod
       required: false
       selector:
         text:
@@ -160,11 +156,169 @@ catalog_deregister:
       selector:
         text:
 
-
     ns:
-      name: Namesspace 
+      name: Namesspace
       description: Namespace
       example: team-1
+      required: false
+      selector:
+        text:
+
+kv_create_or_update:
+  description: The /kv endpoints access Consul's simple key/value store, useful for storing service configuration or other metadata
+  fields:
+    host:
+      name: Host
+      description: The host
+      example: 192.168.0.21
+      required: true
+      selector:
+        text:
+
+    port:
+      name: Port
+      description: The port
+      example: 8500
+      required: false
+      selector:
+        text:
+
+    token:
+      name: Token
+      description: The token
+      example: 57c5d69a-5f19-469b-0543-12a487eecc66
+      required: true
+      selector:
+        text:
+
+    key:
+      name: Key
+      description: Specifies the path of the key.
+      example: jadson179
+      required: true
+      selector:
+        text:
+
+    value:
+      name: Value
+      description: The payload is arbitrary, and is loaded directly into Consul as supplied.
+      example: https://github.com/jadson179
+      required: true
+      selector:
+        text:
+          multiline: true
+
+    datacenter:
+      name: Datacenter
+      description: The datacenter
+      example: prod
+      required: false
+      selector:
+        text:
+
+    flags:
+      name: Flags
+      description: Specifies an unsigned value between 0 and (2^64)-1.
+      example: 0
+      required: false
+      selector:
+        text:
+
+    cas:
+      name: Cas
+      description: Specifies to use a Check-And-Set operation.
+      example: 0
+      required: false
+      selector:
+        text:
+
+    acquire:
+      name: Acquire
+      description: Supply a session ID to use in a lock acquisition operation.
+      example: ""
+      required: false
+      selector:
+        text:
+
+    release:
+      name: Release
+      description: Supply a session ID to use in a release operation.
+      example: ""
+      required: false
+      selector:
+        text:
+
+    ns:
+      name: Namespace
+      description: Specifies the namespace to query.
+      example: default
+      required: false
+      selector:
+        text:
+
+kv_delete:
+  description: This endpoint deletes a single key or all keys sharing a prefix.
+  fields:
+    host:
+      name: Host
+      description: The host
+      example: 192.168.0.21
+      required: true
+      selector:
+        text:
+
+    port:
+      name: Port
+      description: The port
+      example: 8500
+      required: false
+      selector:
+        text:
+
+    token:
+      name: Token
+      description: The token
+      example: 57c5d69a-5f19-469b-0543-12a487eecc66
+      required: true
+      selector:
+        text:
+
+    key:
+      name: Key
+      description: Specifies the path of the key.
+      example: jadson179
+      required: true
+      selector:
+        text:
+
+    datacenter:
+      name: Datacenter
+      description: The datacenter
+      example: prod
+      required: false
+      selector:
+        text:
+
+    recurse:
+      name: Recurse
+      description: Specifies to delete all keys which have the specified prefix.
+      example: False
+      required: false
+      selector:
+        boolean:
+
+    cas:
+      name: Cas
+      description: Specifies to use a Check-And-Set operation.
+      example: 0
+      required: false
+      selector:
+        text:
+
+    ns:
+      name: Namespace
+      description: Specifies the namespace to query.
+      example: default
       required: false
       selector:
         text:
