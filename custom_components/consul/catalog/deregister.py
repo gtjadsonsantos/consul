@@ -34,10 +34,10 @@ def deregister(call:ServiceCall) -> bool:
         headers['X-Consul-Token'] = token
     
     try:
-        put("{protocol}://{host}:{port}/v1/catalog/deregister".format(protocol=protocol,host=host,port=port),
+        response = put("{protocol}://{host}:{port}/v1/catalog/deregister".format(protocol=protocol,host=host,port=port),
         data=json.dumps(payload),
         headers=headers)
-        return True
+        return response.__bool__()
     except IOError as e :
         _LOGGER.exception(e)
         return False

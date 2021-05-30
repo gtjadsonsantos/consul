@@ -32,12 +32,12 @@ def delete(call: ServiceCall) -> bool:
     if token:
         headers['X-Consul-Token'] = token
     try:
-        requests.delete("{protocol}://{host}:{port}/v1/kv/{key}".format(protocol=protocol,host=host,port=port,key=key),
+        response = requests.delete("{protocol}://{host}:{port}/v1/kv/{key}".format(protocol=protocol,host=host,port=port,key=key),
         data=data,
         headers=headers,
         params=params
         )
-        return True
+        return response.__bool__()
     except IOError as e :
         _LOGGER.exception(e)
         return False

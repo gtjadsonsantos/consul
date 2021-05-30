@@ -38,13 +38,13 @@ def create_or_update(call: ServiceCall) -> bool:
     if token:
         headers['X-Consul-Token'] = token
     try:
-        put("{protocol}://{host}:{port}/v1/kv/{key}".format(protocol=protocol,host=host,port=port,key=key),
+        response = put("{protocol}://{host}:{port}/v1/kv/{key}".format(protocol=protocol,host=host,port=port,key=key),
         data=data,
         headers=headers,
         params=params
         
         )
-        return True
+        return response.__bool__()
     except IOError as e :
         _LOGGER.exception(e)
         return False
