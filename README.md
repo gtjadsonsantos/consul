@@ -19,22 +19,23 @@ data:
   host: 192.168.0.21
   port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
-  datacenter: prod
-  node: raspberry
+  datacenter: dc1
+  address: "192.168.0.21"
+  node: jadson
   service:
-    id: redis1
-    service: redis
+    id: jadson
+    service: jadson
     tags:
       - master
       - v1
     port: 8000
   check:
-    node: foobar
-    checkid: 'service:redis1'
+    node: jadson
+    checkid: 'service:jadson'
     name: Redis health check
     notes: Script based health check
     status: passing
-    serviceid: redis1
+    serviceid: jadson
 
 ```
 
