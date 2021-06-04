@@ -74,7 +74,7 @@ catalog_register:
         object:
 
     node_meta:
-      name: node
+      name: Node meta
       description: Specifies arbitrary KV metadata pairs for filtering purposes.
       example: {}
       required: false
