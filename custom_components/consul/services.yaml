@@ -471,7 +471,7 @@ agent_service_register:
       name: Enable Tag Override
       description: Specifies to disable the anti-entropy feature for this service's tags
       example: false
-      required:
+      required: false
       selector:
         boolean:
     weights: 
