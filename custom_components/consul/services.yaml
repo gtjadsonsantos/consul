@@ -9,9 +9,9 @@ catalog_register:
       selector:
         text:
 
-    port:
-      name: Port
-      description: The port
+    host_port:
+      name: Host port
+      description: The port consul
       example: 8500
       required: false
       selector:
@@ -108,10 +108,18 @@ catalog_deregister:
       selector:
         text:
 
-    port:
-      name: Port
-      description: The port
+    host_port:
+      name: Host port
+      description: The port consul
       example: 8500
+      required: false
+      selector:
+        text:
+
+    protocol:
+      name: Protocol
+      description: The protocol HTTP or HTTPS
+      example: http
       required: false
       selector:
         text:
@@ -175,10 +183,18 @@ kv_create_or_update:
       selector:
         text:
 
-    port:
-      name: Port
-      description: The port
+    host_port:
+      name: Host port
+      description: The port consul
       example: 8500
+      required: false
+      selector:
+        text:
+
+    protocol:
+      name: Protocol
+      description: The protocol HTTP or HTTPS
+      example: http
       required: false
       selector:
         text:
@@ -266,15 +282,21 @@ kv_delete:
       required: true
       selector:
         text:
-
-    port:
-      name: Port
-      description: The port
+    host_port:
+      name: Host port
+      description: The port consul
       example: 8500
       required: false
       selector:
         text:
 
+    protocol:
+      name: Protocol
+      description: The protocol HTTP or HTTPS
+      example: http
+      required: false
+      selector:
+        text:
     token:
       name: Token
       description: The token
@@ -320,5 +342,185 @@ kv_delete:
       description: Specifies the namespace to query.
       example: default
       required: false
+      selector:
+        text:
+
+
+agent_service_register:
+  description: This endpoint adds a new service, with optional health checks, to the local agent.
+  fields:
+    host:
+      name: Host
+      description: The host
+      example: 192.168.0.21
+      required: true
+      selector:
+        text:
+
+    host_port:
+      name: Host port
+      description: The port consul
+      example: 8500
+      required: false
+      selector:
+        text:
+
+    protocol:
+      name: Protocol
+      description: The protocol HTTP or HTTPS
+      example: http
+      required: false
+      selector:
+        text:
+
+    token:
+      name: Token
+      description: The token
+      example: 57c5d69a-5f19-469b-0543-12a487eecc66
+      required: true
+      selector:
+        text:
+    name: 
+      name: Name
+      description: Specifies the logical name of the service
+      example: homeassistant
+      required: true
+      selector:
+        text:
+    id: 
+      name: Id
+      description: Specifies a unique ID for this service.
+      example: homeassistant
+      required: false
+      selector:
+        text:
+    tags: 
+      name: Tags
+      description: Specifies a list of tags to assign to the service
+      example: >
+        - lan
+        - wan
+      required: false
+      selector:
+        object:
+    address: 
+      name: Address
+      description: Specifies the address of the service
+      example: 192.168.0.21
+      required: false
+      selector:
+        text:
+    taggedaddresses: 
+      name: TaggedAddresses
+      description: Specifies a map of explicit LAN and WAN addresses for the service instance.
+      example: []
+      required: false
+      selector:
+        object:
+    meta: 
+      name: Meta
+      description: Specifies arbitrary KV metadata linked to the service instance.
+      example: []
+      required: false
+      selector:
+        object:
+    port: 
+      name: Port
+      description: Specifies the port of the service
+      example: 8123
+      required: false
+      selector:
+        text:
+    kind: 
+      name: Kind
+      description: The kind of service. Defaults to "" which is a typical Consul service.
+      example: connect-proxy
+      required: false
+      selector: 
+        text:
+    proxy: 
+      name: Proxy
+      description:  From 1.2.3 on, specifies the configuration for a Connect service proxy instance.
+      example: {}
+      required: false
+      selector:
+        object:
+    connect: 
+      name: Connect 
+      description: Specifies the configuration for Connect.
+      example: {}
+      required: false
+      selector:
+        object:
+    check: 
+      name: Check
+      description: Specifies a check.
+      example: {}
+      required: false
+      selector:
+        object:
+    checks: 
+      name: Checks
+      description: Specifies a list of checks
+      example: [{}]
+      required: false
+      selector:
+        object:
+
+    enabletagoverride: 
+      name: Enable Tag Override
+      description: Specifies to disable the anti-entropy feature for this service's tags
+      example: false
+      required:
+      selector:
+        boolean:
+    weights: 
+      name: Weights
+      description: Specifies weights for the service
+      example: {}
+      required: false
+      selector:
+        object:
+
+agent_service_deregister:
+  description: This endpoint removes a service from the local agent. If the service does not exist, no action is taken.
+  fields:
+    host:
+      name: Host
+      description: The host
+      example: 192.168.0.21
+      required: true
+      selector:
+        text:
+
+    host_port:
+      name: Host port
+      description: The port consul
+      example: 8500
+      required: false
+      selector:
+        text:
+
+    protocol:
+      name: Protocol
+      description: The protocol HTTP or HTTPS
+      example: http
+      required: false
+      selector:
+        text:
+
+    token:
+      name: Token
+      description: The token
+      example: 57c5d69a-5f19-469b-0543-12a487eecc66
+      required: true
+      selector:
+        text:
+    
+    service_id: 
+      name: Service id
+      description: Specifies the ID of the service to deregister. This is specified as part of the URL.
+      example: homeassistant
+      required: true
       selector:
         text:

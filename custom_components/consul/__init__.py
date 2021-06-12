@@ -1,27 +1,27 @@
-from homeassistant.core import (HomeAssistant,Config)
+"""The Scheduler Integration."""
 
-from .catalog import (
-    register,
-    deregister
-)
-from .kv import (
-    create_or_update,
-    delete
-)
+from homeassistant.core import (HomeAssistant, Config)
 
-from .const import (
-    DOMAIN
+from . import (
+    agent,
+    catalog,
+    kv,
+    const
 )
 
-def setup(hass:HomeAssistant, config:Config):    
-    
-    hass.services.register(DOMAIN, "catalog_register", register.register)
-    hass.services.register(DOMAIN, "catalog_deregister", deregister.deregister)
-    hass.services.register(DOMAIN, "kv_create_or_update", create_or_update.create_or_update)
-    hass.services.register(DOMAIN, "kv_delete", delete.delete)
 
+def setup(hass: HomeAssistant, config: Config):
+
+    hass.services.register(
+        const.DOMAIN, "catalog_register", catalog.service.register)
+    hass.services.register(
+        const.DOMAIN, "catalog_deregister", catalog.service.deregister)
+    hass.services.register(
+        const.DOMAIN, "kv_create_or_update", kv.create_or_update)
+    hass.services.register(const.DOMAIN, "kv_delete", kv.delete)
+    hass.services.register(
+        const.DOMAIN, "agent_service_register", agent.service_register)
+    hass.services.register(
+        const.DOMAIN, "agent_service_deregister", agent.service_deregister)
 
     return True
-
-
-

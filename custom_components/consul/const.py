@@ -1,3 +1,3 @@
 """Consul constants."""
 
-DOMAIN="consul"
+DOMAIN = "consul"

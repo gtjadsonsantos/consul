@@ -7,7 +7,7 @@
     "python-consul==1.1.0"
   ],
   "codeowners": ["@jadson179"],
-  "version": "2021.1.0",
+  "version": "2021.2.0",
   "iot_class":"local_push"
 }
 
