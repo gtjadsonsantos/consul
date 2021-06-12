@@ -17,7 +17,7 @@ A a low level mechanism for directly registering or updating entries in the cata
 service: consul.catalog_register
 data:
   host: 192.168.0.21
-  port: 8500
+  host_port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   datacenter: dc1
   address: "192.168.0.21"
@@ -48,7 +48,7 @@ Directly remove entries in the catalog.
 service: consul.catalog_deregister
 data:
   host: 192.168.0.21
-  port: 8500
+  host_port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   node: raspberry
   datacenter: prod
@@ -65,7 +65,7 @@ The /kv endpoints access Consul's simple key/value store, useful for storing ser
 service: consul.kv_create_or_update
 data:
   host: 192.168.0.21
-  port: 8500
+  host_port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   key: jadson179
   value: 'https://github.com/jadson179'
@@ -80,13 +80,50 @@ This endpoint deletes a single key or all keys sharing a prefix.
 service: consul.kv_delete
 data:
   host: 192.168.0.21
-  port: 8500
+  host_port: 8500
   token: 57c5d69a-5f19-469b-0543-12a487eecc66
   key: jadson179
   datacenter: prod
   ns: default
 ```
 
+### consul: agent_service_register
+
+This endpoint adds a new service, with optional health checks, to the local agent
+
+```yaml
+service: consul.kv_delete
+data:
+  host: 192.168.0.21
+  host_port: 8500
+  token: 57c5d69a-5f19-469b-0543-12a487eecc66
+  id: redis1
+  name: redis
+  tags: 
+    - primary
+    - v1
+  address: 127.0.0.1
+  port: 8000
+  meta:
+    redis_version: "4.0"
+  enabletagoverride: False
+  weights:
+    passing: 10
+    warning: 1
+```
+
+### consul: agent_service_deregister
+
+This endpoint removes a service from the local agent. If the service does not exist, no action is taken.
+
+```yaml
+service: consul.kv_delete
+data:
+  host: 192.168.0.21
+  host_port: 8500
+  token: 57c5d69a-5f19-469b-0543-12a487eecc66
+  service_id: redis1
+```
 
 ## LICENSE 📝
 
