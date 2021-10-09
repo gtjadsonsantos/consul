@@ -13,9 +13,9 @@ from . import (
 def setup(hass: HomeAssistant, config: Config):
 
     hass.services.register(
-        const.DOMAIN, "catalog_register", catalog.service.register)
+        const.DOMAIN, "catalog_register", catalog.service_register)
     hass.services.register(
-        const.DOMAIN, "catalog_deregister", catalog.service.deregister)
+        const.DOMAIN, "catalog_deregister", catalog.service_deregister)
     hass.services.register(
         const.DOMAIN, "kv_create_or_update", kv.create_or_update)
     hass.services.register(const.DOMAIN, "kv_delete", kv.delete)
