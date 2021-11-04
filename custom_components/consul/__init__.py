@@ -1,4 +1,4 @@
-"""The Scheduler Integration."""
+"""The Consul Integration."""
 
 from homeassistant.core import (HomeAssistant, Config)
 
